@@ -10,7 +10,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
-    @articles = Article.find(params[:id])
+  #  @articles = Article.find(params[:id])
   end
 
   # GET /articles/new
@@ -34,6 +34,7 @@ class ArticlesController < ApplicationController
     else
       render "new"
     end
+
   end
 
   # PATCH/PUT /articles/1
