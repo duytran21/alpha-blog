@@ -6,7 +6,7 @@ $navbar-default-bg: #D5E0E3;
 #logo {
 	float: left;
 	font-size: 1.7em;
-	text-tranform: uppercase;
+	text-transform: uppercase;
 	letter-spacing: -1px;
 	font-weight: bold;
 }
@@ -17,5 +17,51 @@ $navbar-default-bg: #D5E0E3;
 }
 
 #btn-learn {
-	color: #fff
+	color: #fff;
 }
+
+.center {
+	text-align: center;
+	color: #fff;
+}
+
+.jumbotron {
+	background-image: asset-url('homepage_cover.jpg');
+	background-size: cover;  //this attribute will set adaptive width with the image.
+	height: 380px;
+}
+
+#ln-return-article:hover{
+	color: #81D0EB;
+	text-decoration: none;
+	background-color: #fff;
+}
+
+footer {
+	background-color: black;
+	color: #fff;
+	text-align: center;
+	height: 50px;
+}
+
+footer a {
+	text-decoration: none;
+	color: #81D0EB;
+}
+
+footer a:hover {
+	color: orange;
+	text-decoration: none;
+}
+
+footer ul {
+	float: right;
+	list-style: none;
+	margin-top: -18px;
+}
+
+footer ul li{
+	float: left;
+	margin-left: 15px;
+}
+
