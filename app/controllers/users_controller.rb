@@ -24,17 +24,20 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    debugger
     @user = User.new(user_params)
 
-    respond_to do |format|
+    #respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+      #  format.html { redirect_to @user, notice: 'User was successfully created.' }
+      #  format.json { render :show, status: :created, location: @user }
+      flash[:success] = "Welcome #{@user.username} to the Alpha Blog."
+      redirect_to user_path(@user)
       else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+      #  format.html { render :new }
+      #  format.json { render json: @user.errors, status: :unprocessable_entity }
+      render "signup"
       end
-    end
   end
 
   # PATCH/PUT /users/1
@@ -69,6 +72,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :email)
+      params.require(:user).permit(:username, :email, :password)
     end
 end
