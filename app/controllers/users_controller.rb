@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    debugger
+    #debugger
     @user = User.new(user_params)
 
     #respond_to do |format|
@@ -36,22 +36,26 @@ class UsersController < ApplicationController
       else
       #  format.html { render :new }
       #  format.json { render json: @user.errors, status: :unprocessable_entity }
-      render "signup"
+      render "new"
       end
   end
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    respond_to do |format|
+    #debugger
+    #respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+        #format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        #format.json { render :show, status: :ok, location: @user }
+        flash[:success] = "Your account was updated successfully"
+        redirect_to user_path(@user)
       else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        #format.html { render :edit }
+        #format.json { render json: @user.errors, status: :unprocessable_entity }
+        render "edit"
       end
-    end
+    #end
   end
 
   # DELETE /users/1
