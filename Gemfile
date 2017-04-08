@@ -12,8 +12,12 @@ gem 'rails', '~> 5.0.2'
 #gem 'sqlite3' because we host on Heroku but Heroku doesn't use sqlite3 we will put it in development mode
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
-# User bcrypt to encrypt user password.
+# Use bcrypt to encrypt user password.
 gem 'bcrypt', '~> 3.1.7'
+# Use will_paginate to paginate view
+gem 'will_paginate', '3.1.5'
+# Use bootstrap-will_paginate to stylesheet for paginate
+gem 'bootstrap-will_paginate', '0.0.11'
 # Use SCSS for stylesheets
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
