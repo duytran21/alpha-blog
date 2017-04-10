@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, except: [:index, :show]
+  before_action :require_same_user, only: [:edit, :destroy]
 
   # GET /articles
   # GET /articles.json
@@ -29,7 +31,7 @@ class ArticlesController < ApplicationController
   def create
     debugger
     @article = Article.new(article_params)
-    @article.user = User.first
+    @article.user = current_user
     if @article.save
       #do something
       #change flash[:notice] to flash[:success] for _messages new layout.
@@ -79,5 +81,13 @@ class ArticlesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
       params.require(:article).permit(:title, :description)
+    end
+
+    # This method will check if article belongs to user or not and then let user perform edit or destroy action. 
+    def require_same_user
+      if current_user != @article.user
+        flash[:danger] = "You can only edit or delete your own articles"
+        redirect_to root_path
+      end
     end
 end
