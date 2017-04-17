@@ -3,7 +3,11 @@
 one:
   username: MyString
   email: MyString
+#  password_digest: <%= BCrypt::Password.create("123456", cost: 4) %>
+#  admin: true
 
 two:
   username: MyString
   email: MyString
+#  password_digest: <%= BCrypt::Password.create("password", cost: 4) %>
+#  admin: false

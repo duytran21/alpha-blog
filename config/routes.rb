@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 	post 'login', to: 'sessions#create' #create new session
 	delete 'logout', to: 'sessions#destroy' #destroy session => logout action.
 
-
+	resources :categories, except: [:destroy]
 
 
 
