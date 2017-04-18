@@ -4,6 +4,7 @@ class CategoriesControllerTest < ActionController::TestCase
 	def setup
 
 		@category = Category.create(name: "sports")
+		@user  = User.create(username: "tom", email: "tom@example.com", password: "password", admin: true)
 
 	end
 	test "should get index" do 
@@ -12,6 +13,7 @@ class CategoriesControllerTest < ActionController::TestCase
 	end
 
 	test "should get new" do
+		session[:user_id] = @user.id
 		get :new
 		assert_response :success
 	end
@@ -22,5 +24,11 @@ class CategoriesControllerTest < ActionController::TestCase
 		assert_response :success
 	end
 
+	test "should redirect create when admin not log in" do
+		assert_no_difference 'Category.count' do
+			post :create, params: {category: {name: 'sports'}}
+		end
+		assert_redirected_to categories_path
 
+	end
 end
