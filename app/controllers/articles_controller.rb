@@ -29,7 +29,7 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-    debugger
+    #debugger
     @article = Article.new(article_params)
     @article.user = current_user
     if @article.save
@@ -80,7 +80,7 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :description)
+      params.require(:article).permit(:title, :description, category_ids: [])
     end
 
     # This method will check if article belongs to user or not and then let user perform edit or destroy action. 
